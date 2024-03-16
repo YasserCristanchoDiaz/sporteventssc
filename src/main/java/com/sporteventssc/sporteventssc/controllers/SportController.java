@@ -28,7 +28,7 @@ public class SportController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> findById(@PathVariable String id) {
+    public ResponseEntity<Object> findById(@PathVariable Integer id) {
         try {
             Sport result = sportService.findById(id);
             return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);

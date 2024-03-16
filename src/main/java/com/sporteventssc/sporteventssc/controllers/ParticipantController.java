@@ -28,7 +28,7 @@ public class ParticipantController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> findById(@PathVariable String id) {
+    public ResponseEntity<Object> findById(@PathVariable Integer id) {
         try {
             Participant result = participantService.findById(id);
             return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);

@@ -1,5 +1,6 @@
 package com.sporteventssc.sporteventssc.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class Sport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Integer id;
 
     @Column(nullable = false)
     private String name;
@@ -21,17 +22,18 @@ public class Sport {
     private TypeMode typeMode;
 
     @OneToMany(mappedBy = "sport")
+    @JsonIgnore
     private List<Event> events;
 
     public Sport() {
         events = new ArrayList<>();
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

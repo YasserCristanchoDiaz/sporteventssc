@@ -18,7 +18,7 @@ public class SportService {
         return sportRepository.findAll();
     }
 
-    public Sport findById(String id){
+    public Sport findById(Integer id){
         Optional<Sport> optional = sportRepository.findById(id);
         return optional.isPresent() ? optional.get() : null;
     }

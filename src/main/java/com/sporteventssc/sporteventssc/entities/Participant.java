@@ -1,5 +1,6 @@
 package com.sporteventssc.sporteventssc.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ public class Participant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Integer id;
 
     @Column(nullable = false, length = 32)
     private String name;
@@ -33,18 +34,19 @@ public class Participant {
     private LocalDate birthday;
 
     @OneToMany(mappedBy = "participant")
+    @JsonIgnore
     private List<Participation> participations;
 
     public Participant() {
         participations = new ArrayList<>();
     }
 
-    public String getId() {
-        return id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {

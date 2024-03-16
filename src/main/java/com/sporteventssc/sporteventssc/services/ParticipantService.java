@@ -18,7 +18,7 @@ public class ParticipantService {
         return participantRepository.findAll();
     }
 
-    public Participant findById(String id){
+    public Participant findById(Integer id){
         Optional<Participant> optional = participantRepository.findById(id);
         return optional.isPresent() ? optional.get() : null;
     }

@@ -1,5 +1,7 @@
 package com.sporteventssc.sporteventssc.services;
 
+import com.sporteventssc.sporteventssc.entities.Event;
+import com.sporteventssc.sporteventssc.entities.Participant;
 import com.sporteventssc.sporteventssc.entities.Participation;
 import com.sporteventssc.sporteventssc.repositories.ParticipationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,14 @@ public class ParticipationService {
         return participationRepository.findAll();
     }
 
-    public Participation findById(String id){
+    public Participation findById(Integer id){
         Optional<Participation> optional = participationRepository.findById(id);
         return optional.isPresent() ? optional.get() : null;
     }
 
-    public Participation save(Participation participation) {
+    public Participation save(Participation participation, Event event, Participant participant) {
+        participation.setEvent(event);
+        participation.setParticipant(participant);
         return participationRepository.save(participation);
     }
 }

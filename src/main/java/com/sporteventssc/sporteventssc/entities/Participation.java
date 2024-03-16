@@ -1,5 +1,6 @@
 package com.sporteventssc.sporteventssc.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,7 +9,7 @@ public class Participation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "participant_id")
@@ -23,11 +24,11 @@ public class Participation {
 
     public Participation() {}
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
