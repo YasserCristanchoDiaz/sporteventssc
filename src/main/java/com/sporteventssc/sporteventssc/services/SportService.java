@@ -26,4 +26,16 @@ public class SportService {
     public Sport save(Sport sport) {
         return sportRepository.save(sport);
     }
+
+    public Sport delete(Integer id) {
+        Sport sport = findById(id);
+        Sport deleted = new Sport();
+        if (sport != null) {
+            deleted = sport;
+            sportRepository.delete(sport);
+            return deleted;
+        } else {
+            throw new RuntimeException("Sport Not Found with id: " + id);
+        }
+    }
 }

@@ -28,4 +28,15 @@ public class ParticipantService {
     }
 
 
+    public Participant delete(Integer id) {
+        Participant participant = findById(id);
+        Participant deleted = new Participant();
+        if (participant != null) {
+            deleted = participant;
+            participantRepository.delete(participant);
+            return deleted;
+        } else {
+            throw new RuntimeException("Participant Not Found with id: " + id);
+        }
+    }
 }

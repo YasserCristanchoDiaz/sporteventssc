@@ -28,4 +28,16 @@ public class EventService {
         event.setSport(sport);
         return eventRepository.save(event);
     }
+
+    public Event delete(Integer id) {
+        Event event = findById(id);
+        Event deleted = new Event();
+        if (event != null) {
+            deleted = event;
+            eventRepository.delete(event);
+            return deleted;
+        } else {
+            throw new RuntimeException("Event Not Found with id: " + id);
+        }
+    }
 }

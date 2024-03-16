@@ -21,7 +21,7 @@ public class Sport {
     @Column(nullable = false)
     private TypeMode typeMode;
 
-    @OneToMany(mappedBy = "sport")
+    @OneToMany(mappedBy = "sport", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Event> events;
 

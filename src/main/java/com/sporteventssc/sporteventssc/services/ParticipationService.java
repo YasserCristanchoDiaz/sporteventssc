@@ -30,4 +30,16 @@ public class ParticipationService {
         participation.setParticipant(participant);
         return participationRepository.save(participation);
     }
+
+    public Participation delete(Integer id) {
+        Participation participation = findById(id);
+        Participation deleted = new Participation();
+        if (participation != null) {
+            deleted = participation;
+            participationRepository.delete(participation);
+            return deleted;
+        } else {
+            throw new RuntimeException("Participation Not Found with id: " + id);
+        }
+    }
 }
